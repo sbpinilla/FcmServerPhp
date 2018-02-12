@@ -21,11 +21,16 @@ $note->setIcon('notification_icon_resource_name')
     ->setBadge(1);
 
 $deviceToken = "d_yWhxyqi3E:APA91bEz1EMagD9padAXfiXA1gFPHE9fX1TR-3VsA_UKLjYz2Eh1ARcIMfd55kfbAm2Rp4P3-86Mxu9qqITX-ECeCIa7mBX0Gu1lGJYl-uilvbqdP_YSAypHUl-zxydjHNItigg1qU-w";
+
+$id = 12;	
+
+$data = array("someId" => 111 , 
+			  "id" => $id );
 	
 $message = new Message();
 $message->addRecipient(new Device($deviceToken));
 $message->setNotification($note)
-    ->setData(array('someId' => 111));
+    ->setData($data);
 
 $response = $client->send($message);
 var_dump($response->getStatusCode());
